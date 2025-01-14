@@ -1,0 +1,99 @@
+clear
+help writeDataFile
+ <strong>writeDataFile</strong>(file,data)
+ this function writes to the text data file taken in, "file",
+  in the format
+ "objectName, velocity, distance1  ... distance8"
+ objectName is a word
+ velocity is a positive integer
+ distance1-8 are floating point numbers
+ Overwrite any existing data with data from the cell array "data"
+
+help readDataFile
+ [data] = <strong>readDataFile</strong>(file)
+ this function reads in the text data file, "file", in the format
+ "objectName, velocity, distance1  ... distance8"
+ objectName is a word
+ velocity is a positive integer
+ distance1-8 are floating point numbers
+ Return a 10 column cell array "data" containing the data
+ for each row of data in the file.
+
+help plotData
+ <strong>plotData</strong>(data, name)
+ this function gives the plot distance verses angle for all rows of data
+ from the "data" cell array in the format
+ "objectName, velocity, distance1  ... distance8"
+ in this function, distance1-8 references angles 10:10:80
+ function includes title, labels, legends and grid
+ Legend is the format "objectName-velocity" for each row.
+ "*" marks data points and solid lines exist between points.
+ "name" is included as a subtitle
+
+results1_data = readDataFile('results1.txt');
+celldisp(results1_data(2,:));
+ 
+ans{1} =
+ 
+leadball
+ 
+ 
+ans{2} =
+ 
+   20
+
+ 
+ 
+ans{3} =
+ 
+    4.3385
+
+ 
+ 
+ans{4} =
+ 
+    9.3521
+
+ 
+ 
+ans{5} =
+ 
+   12.2587
+
+ 
+ 
+ans{6} =
+ 
+   13.8418
+
+ 
+ 
+ans{7} =
+ 
+   16.0530
+
+ 
+ 
+ans{8} =
+ 
+   13.7815
+
+ 
+ 
+ans{9} =
+ 
+   11.2625
+
+ 
+ 
+ans{10} =
+ 
+    8.6598
+
+ 
+writeDataFile('my_results1.txt',results1_data);
+
+plotData(results1_data,'Results1 - bw540');
+plotData(readDataFile('results2.txt'),'Results2 - bw540');
+%Byron Wong, bw540, 232001450
+diary off
